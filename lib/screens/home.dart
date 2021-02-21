@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/side_drawer.dart';
 import 'map.dart';
 
 class Home extends StatefulWidget {
-  Home( { Key key, this.title}) : super(key: key);
 
-  final String title;
-  
   @override
   _HomeState createState() => _HomeState();
 }
@@ -14,34 +12,39 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget> [
-              Text(
-                'In Development',
-                style: TextStyle(fontSize: 42),
-              ),
-              SizedBox(height: 24),
-              Text(
-                'Imagine a super slick homepage for now',
-                style: TextStyle(fontSize: 20),
-              )
-            ],
+      backgroundColor: Colors.grey,
+      appBar: AppBar(title: Text('Mavericks Abroad')),
+      drawer: SideDrawer(),
+      body: Column(children: <Widget> [
+        Align(
+          alignment: Alignment.topCenter,
+          child: Image(
+            height: 400,
+            width: 350,
+            image: NetworkImage(
+                'https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/02/a0002487/img/basic/a0002487_main.jpg?20201116111704&q=80&rw=750&rh=536'
+            )
           )
-        )
-      ),
-        floatingActionButton: FloatingActionButton(
-          tooltip: 'Open the Map',
-          child: Icon(Icons.map),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => GMap()),
-          ),
         ),
+        Text(
+            'Weather Information Displayed here.',
+          style: TextStyle(fontSize: 24)
+        ),
+        Text(
+          'Picture will update based on forecast.'
+        )
+
+        
+      ],),
+
+        // floatingActionButton: FloatingActionButton(
+        //   tooltip: 'Open the Map',
+        //   child: Icon(Icons.map),
+        //   onPressed: () => Navigator.push(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => GMap()),
+        //   ),
+        // ),
     );
   }
 }

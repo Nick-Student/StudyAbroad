@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/side_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'dart:collection';
 
@@ -39,11 +40,12 @@ class _GMapState extends State<GMap> {
       appBar: AppBar(
         title: Text('Map'),
       ),
+      //drawer: SideDrawer(),
       body: Stack(children: <Widget>[
         GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: LatLng(35.4512,139.6318),
+            target: LatLng(35.2956,139.5805),
             zoom: 12,
           ),
           markers: _markers,
