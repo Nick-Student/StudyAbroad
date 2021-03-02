@@ -60,6 +60,10 @@ class SideDrawer extends StatelessWidget {
                   Icons.translate,
                   color:Colors.blue,
                 ),
+                onTap: () => Navigator.pushNamed(
+                    context,
+                    'phrases'
+                ),
               ),
               ListTile(
                 title: Text('Guidebook'),

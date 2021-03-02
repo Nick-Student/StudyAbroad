@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_project/screens/map.dart';
-//import 'package:location/location.dart';
 import 'package:flutter_project/screens/home.dart';
+import 'package:flutter_project/screens/map.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:location/location.dart';
 import 'package:flutter_project/screens/schedule.dart';
+import 'package:flutter_project/screens/phrases.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         'home': (context) => Home(),
         'map': (context) => GMap(),
         'schedule': (context) => Scheduler(),
+        'phrases': (context) => Phrases(),
       }
     );
   }
