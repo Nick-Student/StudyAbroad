@@ -4,7 +4,6 @@ import 'package:flutter_project/screens/map.dart';
 //import 'package:location/location.dart';
 import 'package:flutter_project/screens/home.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

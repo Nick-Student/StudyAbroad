@@ -42,7 +42,46 @@ class SideDrawer extends StatelessWidget {
                   context,
                   'map',
                 ),
-          )
+              ),
+              ListTile(
+              title: Text('Schedule'),
+              leading: Icon(
+                Icons.list,
+                color:Colors.blue,
+                ),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  'schedule'
+                ),
+              ),
+              ListTile(
+                title: Text('Phrases'),
+                leading: Icon(
+                  Icons.translate,
+                  color:Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Guidebook'),
+                leading: Icon(
+                  Icons.book,
+                  color:Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Photobook'),
+                leading: Icon(
+                  Icons.camera_alt_outlined,
+                  color:Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Announcements'),
+                leading: Icon(
+                  Icons.announcement,
+                  color: Colors.blue,
+                ),
+              )
         ]),)
       ),
     );
