@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/screens/map.dart';
 //import 'package:location/location.dart';
 import 'package:flutter_project/screens/home.dart';
+import 'package:flutter_project/screens/schedule.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (context) => Home(),
         'map': (context) => GMap(),
+        'schedule': (context) => Scheduler(),
       }
     );
   }

@@ -1,21 +1,30 @@
 // Scheduler
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-@override
-void initState() {
-  super.initState();
-  _calendarController = CalaendarController();
+class Scheduler extends StatefulWidget {
+  @override
+  _SchedulerState createState() => _SchedulerState();
 }
 
-@override
-void dispose() {
-  _calendarController.dispose();
-  super.dispose();
-}
-
-@override
-Widget build(BuildContext context) {
-  return TableCalendar(calendarController: _calendarcontroller,)
+class _SchedulerState extends State<Scheduler> {
+  CalendarController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = CalendarController();
+  }
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter Calendar'),
+      ),
+      body: Stack(children: <Widget>[
+        TableCalendar(calendarController: _controller)
+        ],
+      ),
+    );
+  }
 }
 
