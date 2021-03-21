@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/screens/guidebook.dart';
 import 'package:flutter_project/screens/home.dart';
 import 'package:flutter_project/screens/map.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         'map': (context) => GMap(),
         'schedule': (context) => Scheduler(),
         'phrases': (context) => Phrases(),
+        'guidebook': (context) => Guidebook(),
       }
     );
   }

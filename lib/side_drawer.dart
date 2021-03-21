@@ -71,6 +71,10 @@ class SideDrawer extends StatelessWidget {
                   Icons.book,
                   color:Colors.blue,
                 ),
+                onTap: () => Navigator.pushNamed(
+                    context,
+                    'guidebook'
+                ),
               ),
               ListTile(
                 title: Text('Photobook'),
