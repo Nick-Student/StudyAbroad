@@ -7,6 +7,8 @@ import 'package:flutter_project/screens/map.dart';
 import 'package:flutter_project/screens/schedule.dart';
 import 'package:flutter_project/screens/phrases.dart';
 
+
+// This is the action that launches the application.
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,8 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      initialRoute: 'home',
+      initialRoute: 'home', // This is the initial page that is shown when launched
       routes: {
+        // These routes are used to assign a page to the build context of the assigned name
         'home': (context) => Home(),
         'map': (context) => GMap(),
         'schedule': (context) => Scheduler(),

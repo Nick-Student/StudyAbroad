@@ -23,11 +23,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Google maps api dependency
   google_maps_flutter: ^1.2.0
-
+  # PDF sheet api dependency
   advance_pdf_viewer: ^1.2.2
+  # Calendar dependency
   table_calendar: ^2.3.3
-
+  # Used in the weather fetching api
+  http: ^0.12.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -54,6 +58,7 @@ flutter:
 
   assets:
     - assets/guide.pdf
+    - images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

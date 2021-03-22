@@ -7,6 +7,7 @@ import 'package:flutter_project/side_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'dart:collection';
 
+// Creates the GMap page
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
 
@@ -14,10 +15,13 @@ class GMap extends StatefulWidget {
   _GMapState createState() => _GMapState();
 }
 
+
+// Extensions on the GMap that act inside the created page
 class _GMapState extends State<GMap> {
   //Set<Marker> _markers = HashSet<Marker>();
   GoogleMapController _mapController;
 
+  // Creation of the markers and markerId arrays
   Map<MarkerId, Marker> markers = {};
   List listMarkerIds = List();
 
@@ -41,6 +45,7 @@ class _GMapState extends State<GMap> {
           onMapCreated:(GoogleMapController controller){
             _mapController = controller;
 
+            // Bank of MarkerId's
             MarkerId markerId1 = MarkerId("1");
             MarkerId markerId2 = MarkerId("2");
             MarkerId markerId3 = MarkerId("3");
@@ -52,6 +57,7 @@ class _GMapState extends State<GMap> {
             MarkerId markerId9 = MarkerId("9");
             MarkerId markerId10 = MarkerId("10");
 
+            // Adding to the list of MarkerId's 1-10
             listMarkerIds.add(markerId1);
             listMarkerIds.add(markerId2);
             listMarkerIds.add(markerId3);
@@ -63,15 +69,16 @@ class _GMapState extends State<GMap> {
             listMarkerIds.add(markerId9);
             listMarkerIds.add(markerId10);
 
+            // This is the creation of each of the markers, the information provided
+            // is fed to the Googlemaps controller to place the pins
+            // by changing the latlang will change the position of the pin on the map
             Marker marker1=Marker(
             markerId: markerId1,
             position: LatLng(35.4512,139.6318),
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 BitmapDescriptor.hueCyan),
             infoWindow: InfoWindow(
-                //title: "Hytech City",
                 onTap: (){},
-                //snippet: "Snipet Hitech City"
             ));
 
             Marker marker2 = Marker(
@@ -85,74 +92,60 @@ class _GMapState extends State<GMap> {
             markerId: markerId3,
             position: LatLng(35.4512,138.6318),
             infoWindow: InfoWindow(
-                //title: "Miyapur",
                 onTap: (){},
-                //snippet: "Miyapur"
             ));
 
             Marker marker4= Marker(
                 markerId: markerId4,
                 position: LatLng(40.4512,138.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker5= Marker(
                 markerId: markerId5,
                 position: LatLng(36.4512,138.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker6= Marker(
                 markerId: markerId6,
                 position: LatLng(38.4512,132.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker7= Marker(
                 markerId: markerId7,
                 position: LatLng(37.4512,128.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker8= Marker(
                 markerId: markerId8,
                 position: LatLng(30.4512,138.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker9= Marker(
                 markerId: markerId9,
                 position: LatLng(31.5512,132.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
             Marker marker10= Marker(
                 markerId: markerId10,
                 position: LatLng(30.4512,128.6318),
                 infoWindow: InfoWindow(
-                    //title: "Miyapur",
                     onTap: (){},
-                    //snippet: "Miyapur"
                 ));
 
+            // setState places the pins onto the map by making the program redraw the page
+            // with the new information on it.
           setState(() {
             markers[markerId1] = marker1;
             markers[markerId2] = marker2;
