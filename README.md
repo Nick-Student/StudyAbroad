@@ -7,7 +7,7 @@ This app is designed for UTA study abroad students and the staff members accompa
 ## Compile Instructions
 App is being developed on Android Studio, so for the best results app should be compiled via Android Studio
 1) Install the lastest version of Android Studio as well as the Flutter SDK and Java Development Kit
-  - Additional steps are required to install the Flutter SDK and JDK after initial download
+  - Additional steps are required to setup the Flutter SDK and JDK after initial download (refer to helpful links for more information)
   - It is recommended for your Flutter folder to be located someplace where admin priveleges are not required to access for easier installation
 2) Pull the most current version of the code onto your computer
 3) Open the project in Android Studio
