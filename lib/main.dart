@@ -6,7 +6,7 @@ import 'package:flutter_project/screens/map.dart';
 // import 'package:location/location.dart';
 import 'package:flutter_project/screens/schedule.dart';
 import 'package:flutter_project/screens/phrases.dart';
-
+import 'package:flutter_project/screens/photos.dart';
 
 // This is the action that launches the application.
 void main() => runApp(MyApp());
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         'schedule': (context) => Scheduler(),
         'phrases': (context) => Phrases(),
         'guidebook': (context) => Guidebook(),
+        'photobook': (content) => Photobook(),
       }
     );
   }

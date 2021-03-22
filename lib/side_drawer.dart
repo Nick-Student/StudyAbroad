@@ -86,6 +86,10 @@ class SideDrawer extends StatelessWidget {
                   Icons.camera_alt_outlined,
                   color:Colors.blue,
                 ),
+                onTap: () => Navigator.pushNamed(
+                    context,
+                    'photobook'
+                ),
               ),
               ListTile(
                 title: Text('Announcements'),
