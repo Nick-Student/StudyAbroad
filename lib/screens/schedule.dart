@@ -29,7 +29,7 @@ class _SchedulerState extends State<Scheduler> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TableCalendar(
-              events: _events,
+              //events: _events,
               headerStyle: HeaderStyle(
                 centerHeaderTitle: true, //Centering the calendar title
               ),
