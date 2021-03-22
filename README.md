@@ -1,6 +1,9 @@
 # CSE 3311 - Study Abroad App
 This is a Flutter application that is developed on Android Studio for future deployment on Andrioid and IOS devices.
 
+## Vision Statement
+We will develop an app assists UTA students with the struggles of studying abroad. The app will exceed the capabilities of the current UTA application and will provide information to the students tailored to their specific study abroad program.
+
 ## Information
 This app is designed for UTA study abroad students and the staff members accompanying them. The app is designed to match the needs of Professor Aiken and the needs of the students as they are abroad providing thems with features such as basic translated phrases for where they are currently studying abroad and map/location information on planned areas of visit.
 
