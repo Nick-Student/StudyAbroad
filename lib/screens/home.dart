@@ -3,6 +3,7 @@ import 'package:flutter_project/side_drawer.dart';
 //import 'map.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 
 class Home extends StatefulWidget {
 
@@ -14,13 +15,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  int temperature = 0;
+  int temperature;
+  int tempF;
   String location = 'Tokyo';
   String announcement = 'We are meeting at the train-station at 9am.';
   int woeid = 1118370;  // initial where on earth ID for tokyo
 
   String weather = 'clear';
   String abbreviation = '';
+  String errorMessage = '';
 
   String locationApiUrl = 'https://www.metaweather.com/api/location/';
   String searchApiUrl = 'https://www.metaweather.com/api/location/search/?query=';
@@ -32,18 +35,30 @@ class _HomeState extends State<Home> {
   }
 
   // Takes in the search results of user input location and provides
-  // the location and woeid to be used
+  // the location and woeid to be used.
+  // Additionally this acts as our error handling, if the API doesn't support
+  // the location searched it will give an error, and erase the error on a
+  // valid input.
   void fetchSearch(String input) async {
-    var searchResult = await http.get(searchApiUrl + input);
-    var result = json.decode(searchResult.body)[0];
+    try {
+      var searchResult = await http.get(searchApiUrl + input);
+      var result = json.decode(searchResult.body)[0];
 
-    setState(() {
-      location = result["title"];
-      woeid = result["woeid"];
-
-    });
+      setState(() {
+        location = result["title"];
+        woeid = result["woeid"];
+        errorMessage = '';
+      });
+    }
+    catch(error){
+      setState(() {
+        errorMessage = "This city either does not exist or is not supported at this time.";
+      });
+    }
   } // end fetchSearch
 
+  // This function calls the weather API and sets values
+  // this lets us use the temperature, weather type and icon
   void fetchLocation() async {
     var locationResult = await http.get(locationApiUrl + woeid.toString());
     var result = json.decode(locationResult.body);
@@ -52,20 +67,25 @@ class _HomeState extends State<Home> {
 
     setState(() {
       temperature = data["the_temp"].round();
+      tempF = ((temperature * 1.8)+32).round();
       weather = data["weather_state_name"].replaceAll(' ','').toLowerCase();
       abbreviation = data["weather_state_abbr"];
     });
   }   // end fetchLocation
 
-  void onTextFieldSubmitted(String input){
-    fetchSearch(input);
-    fetchLocation();
-  }
+  // This pulls the information once the city is entered and asynchronously
+  // updates the application. This solved the error where enter would need to
+  // be hit multiple times.
+  void onTextFieldSubmitted(String input) async{
+    await fetchSearch(input);
+    await fetchLocation();
+  } // end onTextFieldSubmitted
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return temperature == null ? Center(child:CircularProgressIndicator()) :
+    Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(title: Text('Mavericks Abroad')),
       drawer: SideDrawer(),
@@ -98,7 +118,7 @@ class _HomeState extends State<Home> {
 
                     Center(
                       child: Text(
-                        temperature.toString() + ' °C',
+                        tempF.toString() + ' °F',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 60.0,
@@ -163,6 +183,29 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
+                  Column(
+                    children: [
+                      Container(
+                        width: 350,
+                        child: Text(
+                            errorMessage,
+                            softWrap: true,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: Platform.isAndroid? 18.0: 20.0,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(1, 1),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ]
+                          )
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
               Column(

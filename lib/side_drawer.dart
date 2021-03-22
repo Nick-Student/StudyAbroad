@@ -21,6 +21,10 @@ class SideDrawer extends StatelessWidget {
                         'https://cdn.bcdtravel.com/move-global/wp-content/uploads/sites/142/Move_MarketMonitor_Japan_slider_May2019.jpg'
                       )),
               ),
+
+              // Below here is the creation of all sidebar buttons.
+              // For any page that is not the home page use pushNamed to allow for
+              // a back button to the home page.
               ListTile(
                 title: Text('Home'),
                 leading: Icon(
