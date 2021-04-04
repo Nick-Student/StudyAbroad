@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class SideDrawer extends StatelessWidget {
   const SideDrawer({Key key}) : super(key: key);
 
@@ -14,8 +15,8 @@ class SideDrawer extends StatelessWidget {
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
-                  accountName: Text('Test'),
-                  accountEmail: Text('test@gmail.com'),
+                  accountName: Text('Student'),
+                  accountEmail: Text('Student@mavs.uta.edu'),
                   currentAccountPicture: CircleAvatar(
                       backgroundImage: NetworkImage(
                         'https://cdn.bcdtravel.com/move-global/wp-content/uploads/sites/142/Move_MarketMonitor_Japan_slider_May2019.jpg'

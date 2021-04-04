@@ -51,11 +51,11 @@ class _GMapState extends State<GMap> {
             MarkerId markerId3 = MarkerId("3");
             MarkerId markerId4 = MarkerId("4");
             MarkerId markerId5 = MarkerId("5");
-            MarkerId markerId6 = MarkerId("6");
+           /* MarkerId markerId6 = MarkerId("6");
             MarkerId markerId7 = MarkerId("7");
             MarkerId markerId8 = MarkerId("8");
             MarkerId markerId9 = MarkerId("9");
-            MarkerId markerId10 = MarkerId("10");
+            MarkerId markerId10 = MarkerId("10");*/
 
             // Adding to the list of MarkerId's 1-10
             listMarkerIds.add(markerId1);
@@ -63,53 +63,56 @@ class _GMapState extends State<GMap> {
             listMarkerIds.add(markerId3);
             listMarkerIds.add(markerId4);
             listMarkerIds.add(markerId5);
-            listMarkerIds.add(markerId6);
+            /*listMarkerIds.add(markerId6);
             listMarkerIds.add(markerId7);
             listMarkerIds.add(markerId8);
             listMarkerIds.add(markerId9);
-            listMarkerIds.add(markerId10);
+            listMarkerIds.add(markerId10);*/
 
             // This is the creation of each of the markers, the information provided
             // is fed to the Googlemaps controller to place the pins
             // by changing the latlang will change the position of the pin on the map
             Marker marker1=Marker(
             markerId: markerId1,
-            position: LatLng(35.4512,139.6318),
-            icon: BitmapDescriptor.defaultMarkerWithHue(
-                BitmapDescriptor.hueCyan),
+            position: LatLng(35.4512,139.6318), // Sakuragicho
             infoWindow: InfoWindow(
                 onTap: (){},
+              title: 'Sakuragicho'
             ));
 
             Marker marker2 = Marker(
             markerId: markerId2,
-            position: LatLng(34.4512,139.6318),
-            icon: BitmapDescriptor.defaultMarkerWithHue
-              (BitmapDescriptor.hueGreen),
-            );
+            position: LatLng(35.6762,139.6503), // Tokyo
+              infoWindow: InfoWindow(
+                onTap: (){},
+                title: 'Tokyo'
+            ));
 
             Marker marker3= Marker(
             markerId: markerId3,
-            position: LatLng(35.4512,138.6318),
+            position: LatLng(35.0116,135.7681), // Kyoto
             infoWindow: InfoWindow(
                 onTap: (){},
+              title: 'Kyoto'
             ));
 
             Marker marker4= Marker(
                 markerId: markerId4,
-                position: LatLng(40.4512,138.6318),
+                position: LatLng(35.2815,139.6722), // Yokosuka
                 infoWindow: InfoWindow(
                     onTap: (){},
+                  title: 'Yokosuka'
                 ));
 
             Marker marker5= Marker(
                 markerId: markerId5,
-                position: LatLng(36.4512,138.6318),
+                position: LatLng(35.3192,139.5467), // Kamakura
                 infoWindow: InfoWindow(
                     onTap: (){},
+                  title:'Kamakura'
                 ));
 
-            Marker marker6= Marker(
+            /*Marker marker6= Marker(
                 markerId: markerId6,
                 position: LatLng(38.4512,132.6318),
                 infoWindow: InfoWindow(
@@ -142,7 +145,7 @@ class _GMapState extends State<GMap> {
                 position: LatLng(30.4512,128.6318),
                 infoWindow: InfoWindow(
                     onTap: (){},
-                ));
+                ));*/
 
             // setState places the pins onto the map by making the program redraw the page
             // with the new information on it.
@@ -152,11 +155,11 @@ class _GMapState extends State<GMap> {
             markers[markerId3] = marker3;
             markers[markerId4] = marker4;
             markers[markerId5] = marker5;
-            markers[markerId6] = marker6;
+           /* markers[markerId6] = marker6;
             markers[markerId7] = marker7;
             markers[markerId8] = marker8;
             markers[markerId9] = marker9;
-            markers[markerId10] = marker10;
+            markers[markerId10] = marker10;*/
           });},
 
           initialCameraPosition: CameraPosition(

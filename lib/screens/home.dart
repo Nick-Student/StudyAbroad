@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
 
+
 class Home extends StatefulWidget {
 
   @override
@@ -84,7 +85,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return temperature == null ? Center(child:CircularProgressIndicator()) :
+    return temperature == null ? Center(child:CircularProgressIndicator()) : //when the app laods temp = null, this gives a loading icon
     Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(title: Text('Mavericks Abroad')),

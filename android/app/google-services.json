@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "42359230843",
+    "project_id": "mavericks-abroad",
+    "storage_bucket": "mavericks-abroad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42359230843:android:35e2d4c8fd3a2c9807edde",
+        "android_client_info": {
+          "package_name": "com.example.flutter_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42359230843-c0qn6fri920mhp9l1tp39ep3cbdv1h7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvjU2wpmbSCyIDs03JWA27kR2yhAJHS4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42359230843-c0qn6fri920mhp9l1tp39ep3cbdv1h7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

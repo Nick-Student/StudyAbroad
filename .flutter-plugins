@@ -1,9 +1,13 @@
 # This is a generated file; do not edit or check into version control.
-advance_pdf_viewer=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\advance_pdf_viewer-1.2.2\\
-flutter_plugin_android_lifecycle=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.11\\
-google_maps_flutter=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_maps_flutter-1.2.0\\
-path_provider=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.28\\
-path_provider_linux=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
-path_provider_macos=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+8\\
-path_provider_windows=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-0.0.5\\
-sqflite=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-2.0.0+3\\
+advance_pdf_viewer=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\advance_pdf_viewer-1.2.2\\
+cloud_firestore=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-0.12.11\\
+firebase_auth=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-0.14.0+9\\
+firebase_core=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-0.4.5\\
+firebase_core_web=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-0.1.1+2\\
+flutter_plugin_android_lifecycle=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.11\\
+google_maps_flutter=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\google_maps_flutter-1.2.0\\
+path_provider=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.28\\
+path_provider_linux=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
+path_provider_macos=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+8\\
+path_provider_windows=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-0.0.5\\
+sqflite=C:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-2.0.0+3\\
