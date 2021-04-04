@@ -29,7 +29,9 @@ dependencies:
   # PDF sheet api dependency
   advance_pdf_viewer: ^1.2.2
   # Calendar dependency
-  table_calendar: ^2.3.3
+  webview_flutter: ^1.0.7
+  url_flutter: ^5.7.10
+  #table_calendar: ^2.3.3
   # Used in the weather fetching api
   http: ^0.12.1
   # The following adds the Cupertino Icons font to your application.
