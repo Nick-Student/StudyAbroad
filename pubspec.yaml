@@ -28,6 +28,7 @@ dependencies:
   google_maps_flutter: ^1.2.0
   # PDF sheet api dependency
   advance_pdf_viewer: ^1.2.2
+  # Audio player dependency
   audioplayers: ^0.16.2
   # Calendar dependency
   webview_flutter: ^1.0.7
@@ -67,11 +68,9 @@ flutter:
 
   assets:
     - assets/guide.pdf
+    - audio/
     - images/
     - pictures/
-    - assets/audio/おはようございます.mp3
-    - assets/audio/こんにちは.mp3
-    - assets/audio/さようなら.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
