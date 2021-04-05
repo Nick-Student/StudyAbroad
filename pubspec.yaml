@@ -30,7 +30,7 @@ dependencies:
   advance_pdf_viewer: ^1.2.2
   # Calendar dependency
   webview_flutter: ^1.0.7
-  url_flutter: ^5.7.10
+  url_launcher: ^5.7.10
   #table_calendar: ^2.3.3
   # Used in the weather fetching api
   http: ^0.12.1
@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   # Dependency for the storage capabilities of firebase
   cloud_firestore: ^0.12.9+4
+  provider: ^5.0.0
 
 
 dev_dependencies:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/services/auth.dart';
 import 'package:flutter_project/side_drawer.dart';
 ////import 'map.dart';
 import 'package:http/http.dart' as http;
@@ -82,13 +83,27 @@ class _HomeState extends State<Home> {
     await fetchLocation();
   } // end onTextFieldSubmitted
 
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return temperature == null ? Center(child:CircularProgressIndicator()) : //when the app laods temp = null, this gives a loading icon
     Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: AppBar(title: Text('Mavericks Abroad')),
+      appBar: AppBar(
+          title: Text(
+              'Mavericks Abroad'
+          ),
+        actions: <Widget>[
+          FlatButton.icon(
+              onPressed: () async {
+                await _auth.signOut();
+              },
+              icon: Icon(Icons.person),
+              label: Text('Logout'),
+          )
+        ],
+      ),
       drawer: SideDrawer(),
       body: Container(
         decoration: BoxDecoration(

@@ -1,8 +1,13 @@
 // This is the page that handles login
 
+//import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/screens/home.dart';
+import 'package:flutter_project/services/auth.dart';
+import 'package:flutter_project/models/user.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
 
@@ -11,122 +16,169 @@ class Login extends StatefulWidget {
 }
 
 class _Login extends State<Login>{
-  @override
 
+
+  final AuthService _auth = AuthService();
+  @override
   Widget build(BuildContext context) {
 
+    final user = Provider.of<User>(context);
+    print(user);
+
     return Scaffold(
-      appBar: AppBar(title: Text('Mavericks Abroad', textAlign: TextAlign.center)),
+      appBar: AppBar(
+        titleSpacing: 120,
+          title: Text(
+              'Mavericks Abroad',
+              textAlign: TextAlign.center
+          )
+      ),
+      backgroundColor: Colors.deepOrange[100],
       body:Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://utamavs.com/images/logos/site/site.png'
-                  ),
-                 // fit: BoxFit.cover,
-                )
-              )
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Login',
-                  style: TextStyle(
-                    fontSize: 22,
-                    ),
-                ),
-                Container(
-                  width: 300,
-                  child: TextField(
-                    style: TextStyle(color: Colors.black, fontSize: 25),
-                    decoration: InputDecoration(
-                      hintText: 'Enter your username',
-                      hintStyle:
-                      TextStyle(
-                          color: Colors.blueGrey,
-                          fontSize: 18.0,
-                          shadows: <Shadow>[
-                            Shadow(
-                              offset: Offset(1, 1),
-                              blurRadius: 3.0,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ]
-                      ),
-                   )
-                  ),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Password',
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
-                ),
-                Container(
-                  width: 300,
-                  child: TextField(
-                      style: TextStyle(color: Colors.black, fontSize: 25),
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        hintStyle:
-                        TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 18.0,
-                            shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(1, 1),
-                                blurRadius: 3.0,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            ]
+            Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        image: NetworkImage(
+                            'https://utamavs.com/images/logos/site/site.png'),
+                        // fit: BoxFit.cover,
+                      ))),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Login: ',
+                        style: TextStyle(
+                          fontSize: 25,
+                          height: 2,
                         ),
+                      ),
+                      Container(
+                        width: 300,
+                        child: TextField(
+                            style: TextStyle(color: Colors.black, fontSize: 25),
+                            decoration: InputDecoration(
+                              hintText: 'Enter your username',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 18.0,
+                              ),
+                            )),
                       )
+                    ],
                   ),
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextButton(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Password: ',
+                        style: TextStyle(
+                          fontSize: 22,
+                          height: 2,
+                        ),
+                      ),
+                      Container(
+                        width: 300,
+                        child: TextField(
+                            style: TextStyle(color: Colors.black, fontSize: 24),
+                            decoration: InputDecoration(
+                              hintText: 'Enter your password',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 18.0,
+                              ),
+                            )),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height:15
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                             RaisedButton(
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  'home',
+                                );
+                              },
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              color: Colors.blueGrey,
+                              child: Text(
+                                'Submit',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 120,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RaisedButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
                         context,
                         'home',
                       );
                     },
-                    //padding: EdgeInsets.fromLTRB(30, 5, 0,0),
-                    //color: Colors.blueGrey,
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(
-                        color: Colors.blueGrey,
+                      child: Text(
+                        'Make an Account'
                       ),
+                      color: Colors.blueGrey,
                     ),
-                  ),
-                ),
-                SizedBox(
-                  width: 15,
-                ),
+                    RaisedButton(
+                        onPressed: () async {
+                          dynamic result = await _auth.signInAnon();
+                          if (result == null) {
+                            print('error signing in');
+                          }else {
+                            print('signed in');
+                            print('anonymous user ' + result.uid);
+                          }
+                          Navigator.pushReplacementNamed(
+                            context,
+                            'home',
+                          );
+                        },
+                        child: Text(
+                            'Sign in Anonymously'
+                        ),
+                      color: Colors.blueGrey,
+                    )
+                  ],
+                )
               ],
             )
           ],
         ),
-      )
+        )
     );
   }
 }

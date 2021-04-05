@@ -8,7 +8,10 @@ import 'package:flutter_project/screens/schedule.dart';
 import 'package:flutter_project/screens/phrases.dart';
 import 'package:flutter_project/screens/photos.dart';
 import 'package:flutter_project/screens/login.dart';
-
+import 'package:flutter_project/services/auth.dart';
+import 'package:flutter_project/wrapper.dart';
+import 'package:provider/provider.dart';
+import 'models/user.dart';
 
 // This is the action that launches the application.
 void main() => runApp(MyApp());
@@ -16,23 +19,26 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Mavericks Abroad",
-        debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        title: "Mavericks Abroad",
+          debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+        ),
+        home: Wrapper(), // This is the initial page that is shown when launched
+        routes: {
+          // These routes are used to assign a page to the build context of the assigned name
+          'home': (context) => Home(),
+          'map': (context) => GMap(),
+          'schedule': (context) => Scheduler(),
+          'phrases': (context) => Phrases(),
+          'guidebook': (context) => Guidebook(),
+          'photobook': (content) => Photobook(),
+          'login': (context) => Login(),
+        }
       ),
-      initialRoute: 'login', // This is the initial page that is shown when launched
-      routes: {
-        // These routes are used to assign a page to the build context of the assigned name
-        'home': (context) => Home(),
-        'map': (context) => GMap(),
-        'schedule': (context) => Scheduler(),
-        'phrases': (context) => Phrases(),
-        'guidebook': (context) => Guidebook(),
-        'photobook': (content) => Photobook(),
-        'login': (context) => Login(),
-      }
     );
   }
 }
