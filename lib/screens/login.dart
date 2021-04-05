@@ -19,6 +19,11 @@ class _Login extends State<Login>{
 
 
   final AuthService _auth = AuthService();
+  // text field state
+  String email = '';
+  String password = '';
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -43,7 +48,7 @@ class _Login extends State<Login>{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      height: 250,
+                      height: 154,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                         image: NetworkImage(
@@ -63,7 +68,10 @@ class _Login extends State<Login>{
                       ),
                       Container(
                         width: 300,
-                        child: TextField(
+                        child: TextFormField(
+                          onChanged: (val){
+                            setState(() => email = val);
+                          },
                             style: TextStyle(color: Colors.black, fontSize: 25),
                             decoration: InputDecoration(
                               hintText: 'Enter your username',
@@ -88,7 +96,11 @@ class _Login extends State<Login>{
                       ),
                       Container(
                         width: 300,
-                        child: TextField(
+                        child: TextFormField(
+                          obscureText: true,
+                          onChanged: (val) {
+                            setState(() => password = val);
+                          },
                             style: TextStyle(color: Colors.black, fontSize: 24),
                             decoration: InputDecoration(
                               hintText: 'Enter your password',
@@ -103,23 +115,21 @@ class _Login extends State<Login>{
                   Column(
                     children: [
                       Container(
-                        height:15
+                        height:10
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                              RaisedButton(
-                              onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  'home',
-                                );
+                              onPressed: () async {
+                                print(email);
+                                print(password);
                               },
                               padding: EdgeInsets.symmetric(vertical: 20),
-                              color: Colors.blueGrey,
+                              color: Colors.green,
                               child: Text(
-                                'Submit',
+                                'Sign in',
                                 style: TextStyle(
                                   color: Colors.black,
                                 ),
@@ -136,7 +146,7 @@ class _Login extends State<Login>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 120,
+                  height: 60,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -145,7 +155,7 @@ class _Login extends State<Login>{
                     onPressed: () {
                       Navigator.pushReplacementNamed(
                         context,
-                        'home',
+                        'register',
                       );
                     },
                       child: Text(

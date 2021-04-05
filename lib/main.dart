@@ -9,6 +9,7 @@ import 'package:flutter_project/screens/phrases.dart';
 import 'package:flutter_project/screens/photos.dart';
 import 'package:flutter_project/screens/login.dart';
 import 'package:flutter_project/services/auth.dart';
+import 'package:flutter_project/services/register.dart';
 import 'package:flutter_project/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'models/user.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           'guidebook': (context) => Guidebook(),
           'photobook': (content) => Photobook(),
           'login': (context) => Login(),
+          'register': (context) => Register(),
         }
       ),
     );
