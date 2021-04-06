@@ -97,7 +97,11 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () async {
+                //await _auth.signInAnon();
                 await _auth.signOut();
+                print(_auth.user);
+                if(_auth.user == null)
+                  Navigator.pushReplacementNamed(context, 'login');
               },
               icon: Icon(Icons.person),
               label: Text('Logout'),
