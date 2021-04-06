@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/screens/currency.dart';
 import 'package:flutter_project/screens/guidebook.dart';
 import 'package:flutter_project/screens/home.dart';
 import 'package:flutter_project/screens/map.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           'phrases': (context) => Phrases(),
           'guidebook': (context) => Guidebook(),
           'photobook': (content) => Photobook(),
+          'currency' : (context) => Currency(),
           'login': (context) => Login(),
           'register': (context) => Register(),
         }
