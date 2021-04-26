@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/services/auth.dart';
 import 'package:flutter_project/side_drawer.dart';
 ////import 'map.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
@@ -20,7 +21,8 @@ class _HomeState extends State<Home> {
   int temperature;
   int tempF;
   String location = 'Tokyo';
-  String announcement = 'We are meeting at the train-station at 9am.';
+  String announcement;
+  List<String> latestAnnouncements = ["Hello!"];
   int woeid = 1118370;  // initial where on earth ID for tokyo
 
   String weather = 'clear';
@@ -83,11 +85,22 @@ class _HomeState extends State<Home> {
     await fetchLocation();
   } // end onTextFieldSubmitted
 
+  // This pulls the announcements from firestore and stores it into an array.
+  getLatestAnnouncement() {
+    CollectionReference announcements = Firestore.instance.collection('announcements');
+    announcements.getDocuments().then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((DocumentSnapshot doc) {
+        latestAnnouncements.add(doc["text"]);
+      });
+    });
+  }
+
   final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
-    return temperature == null ? Center(child:CircularProgressIndicator()) : //when the app laods temp = null, this gives a loading icon
+    getLatestAnnouncement();
+    return temperature == null ? Center(child:CircularProgressIndicator()) : //when the app loads temp = null, this gives a loading icon
     Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -234,7 +247,7 @@ class _HomeState extends State<Home> {
                     width: 350,
                     child:Center(
                       child: Text(
-                      announcement,
+                      announcement = latestAnnouncements.last,
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,
