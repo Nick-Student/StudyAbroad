@@ -6,6 +6,7 @@ import 'package:flutter_project/screens/map.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:location/location.dart';
 import 'package:flutter_project/screens/schedule.dart';
+import 'package:flutter_project/screens/announcements.dart';
 import 'package:flutter_project/screens/phrases.dart';
 import 'package:flutter_project/screens/photos.dart';
 import 'package:flutter_project/screens/login.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
           'home': (context) => Home(),
           'map': (context) => GMap(),
           'schedule': (context) => Scheduler(),
+          'announcements': (context) => Announcements(),
           'phrases': (context) => Phrases(),
           'guidebook': (context) => Guidebook(),
           'photobook': (content) => Photobook(),

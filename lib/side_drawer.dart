@@ -60,6 +60,17 @@ class SideDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
+                title: Text('Announcements'),
+                leading: Icon(
+                  Icons.announcement,
+                  color:Colors.blue,
+                ),
+                onTap: () => Navigator.pushNamed(
+                    context,
+                    'announcements'
+                ),
+              ),
+              ListTile(
                 title: Text('Phrases'),
                 leading: Icon(
                   Icons.translate,
@@ -103,13 +114,6 @@ class SideDrawer extends StatelessWidget {
                     'currency'
                 ),
               ),
-              ListTile(
-                title: Text('Announcements'),
-                leading: Icon(
-                  Icons.announcement,
-                  color: Colors.blue,
-                ),
-              )
         ]),)
       ),
     );

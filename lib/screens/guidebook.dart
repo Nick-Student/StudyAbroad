@@ -18,7 +18,7 @@ class _GuidebookState extends State<Guidebook> {
 
   // The loadDocument function will get the PDF file from the assets folder.
   loadDocument() async {
-    document = document = await PDFDocument.fromAsset('assets/guide.pdf');
+    document = await PDFDocument.fromAsset('assets/guide.pdf');
 
     setState(() => _isLoading = false);
   }
