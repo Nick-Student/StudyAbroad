@@ -28,11 +28,17 @@ class _AnnouncementState extends State<Announcements> {
                 child: CircularProgressIndicator(),
               );
             } else {
-                return ListView.builder(
+                return ListView.separated(
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
                     return ListTile(
-                      title: Text(snapshot.data[index].data["text"]),
+                      title: Text(snapshot.data[snapshot.data.length - index - 1].data["text"]),
+                    );
+                },
+                separatorBuilder: (_, index) {
+                    return Divider(
+                      color: Colors.black,
+                      thickness: 0.5
                     );
                 });
               }
