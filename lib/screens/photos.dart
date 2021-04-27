@@ -1,12 +1,20 @@
 // Photobase
 //import 'package:flutter/cupertino.dart';
 import 'dart:typed_data';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
-//import 'photoStorage.dart';
+import 'photoStorage.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Photobook extends StatefulWidget {
+  int _index;
+
+  GridItem(int index){
+    this._index = index+1;
+  }
+
   @override
   _PhotobookState createState() => _PhotobookState();
 }
@@ -15,12 +23,31 @@ class _PhotobookState extends State<Photobook> {
 
   Widget makeGrid(){
     return GridView.builder(
-      itemCount: 12,
+        itemCount: 10,
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context,index) {
           return GridItem(index+1);
         });
+  }
+
+  uploadImage() async {
+    final _firebaseStorage = FirebaseStorage.instance;
+    final _imagePicker = ImagePicker();
+    PickedFile image;
+
+    await Permission.photos.request();
+
+    var permissionStatus = await Permission.photos.status;
+
+    if (permissionStatus.isGranted){
+      image = await _imagePicker.getImage(source: ImageSource.gallery);
+      var file = File(image.path);
+
+      if (image!=null){
+        var snapshot = await _firebaseStorage.ref().child('test/3.jpg').putFile(file).onComplete;
+      }
+    }
   }
 
   @override
@@ -31,6 +58,14 @@ class _PhotobookState extends State<Photobook> {
       ),
       body: Container(
         child: makeGrid(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          uploadImage();
+        },
+        child: Icon(
+          Icons.add,
+        )
       ),
     );
   }
@@ -52,14 +87,20 @@ class _GridItemState extends State<GridItem> {
   StorageReference photosReference = FirebaseStorage.instance.ref().child("test");
 
   getImage(){
-    int MAX_SIZE = 7*1024*1024;
-    photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
-      this.setState(() {
-        imageFile = data;
+    if(!requestedIndexes.contains(widget._index)){
+      int MAX_SIZE = 7*1024*1024;
+      photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
+        this.setState(() {
+          imageFile = data;
+        });
+        imageData.putIfAbsent(widget._index, (){
+          return data;
+        });
+      }).catchError((error){
+        //debugPrint(error.toString());
       });
-    }).catchError((error){
-
-    });
+      requestedIndexes.add(widget._index);
+    }
   }
 
   Widget decideGridTileWidget() {
@@ -73,7 +114,13 @@ class _GridItemState extends State<GridItem> {
   @override
   void initState(){
     super.initState();
-    getImage();
+    if(!imageData.containsKey(widget._index)){
+      getImage();
+    } else {
+      this.setState(() {
+        imageFile = imageData[widget._index];
+      });
+    }
   }
 
   @override

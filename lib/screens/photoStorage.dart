@@ -1,6 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
-class photoStorage extends StatelessWidget {
+
+Map<int,Uint8List> imageData = {};
+
+List<int> requestedIndexes = [];
+
+/*class photoStorage extends StatelessWidget {
   final String path;
   final String title;
   final String photographer;
@@ -101,4 +108,4 @@ class photoStorage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
