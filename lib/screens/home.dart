@@ -250,12 +250,12 @@ class _HomeState extends State<Home> {
                       announcement = latestAnnouncements.last,
                       style: TextStyle(
                           fontSize: 25,
-                          color: Colors.white,
+                          color: Colors.black87,
                           shadows: <Shadow>[
                           Shadow(
                           offset: Offset(1, 1),
                           blurRadius: 3.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Color.fromARGB(255, 0, 0, 255),
                             ),
                           ]
                         )

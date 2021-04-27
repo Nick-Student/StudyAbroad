@@ -9,6 +9,8 @@ class Announcements extends StatefulWidget {
 
 class _AnnouncementState extends State<Announcements> {
 
+
+
   Future getAnnouncements() async {
     var firestore = Firestore.instance;
     QuerySnapshot announce = await firestore.collection("announcements").getDocuments();
@@ -38,11 +40,12 @@ class _AnnouncementState extends State<Announcements> {
                 separatorBuilder: (_, index) {
                     return Divider(
                       color: Colors.black,
-                      thickness: 0.5
+                      thickness: 1
                     );
                 });
               }
           }),
+
     );
   }
 }

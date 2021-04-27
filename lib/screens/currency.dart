@@ -73,17 +73,13 @@ class _CurrencyState extends State<Currency> {
                         ],
                       ),
                       SizedBox(height: 50.0),
-                      TextField(
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            labelText: "Input value to convert:",
-                            labelStyle: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 18.0,
-                              color: secondaryColor,
-                            )
-                        )
+                      Text(
+                        'Input value to convert',
+                        style: TextStyle(
+                          color: secondaryColor,
+                          fontSize: 16.0
+                        ),
+
                       ),
                       TextField(
                         onSubmitted: (value) async {

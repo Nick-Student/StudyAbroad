@@ -3,7 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class SideDrawer extends StatelessWidget {
   const SideDrawer({Key key}) : super(key: key);
 
@@ -112,6 +111,24 @@ class SideDrawer extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(
                     context,
                     'currency'
+                ),
+              ),
+              ListTile(
+                title: Text('Help'),
+                leading: Icon(
+                  Icons.local_hospital,
+                  color:Colors.red,
+                ),
+                onTap: () => Navigator.pushNamed(
+                    context,
+                    'help'
+                ),
+              ),
+              ListTile(
+                title: Text('If you need medical assistance dial 119'),
+                leading: Icon(
+                  Icons.error,
+                  color:Colors.red,
                 ),
               ),
         ]),)

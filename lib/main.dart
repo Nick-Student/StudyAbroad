@@ -10,11 +10,13 @@ import 'package:flutter_project/screens/announcements.dart';
 import 'package:flutter_project/screens/phrases.dart';
 import 'package:flutter_project/screens/photos.dart';
 import 'package:flutter_project/screens/login.dart';
+import 'package:flutter_project/screens/help.dart';
 import 'package:flutter_project/services/auth.dart';
 import 'package:flutter_project/services/register.dart';
 import 'package:flutter_project/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'models/user.dart';
+import 'services/database.dart';
 
 // This is the action that launches the application.
 void main() => runApp(MyApp());
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
+          //platform: TargetPlatform.iOS,
         ),
         home: Wrapper(), // This is the initial page that is shown when launched
         routes: {
@@ -43,6 +46,7 @@ class MyApp extends StatelessWidget {
           'currency' : (context) => Currency(),
           'login': (context) => Login(),
           'register': (context) => Register(),
+          'help': (context) => Help(),
         }
       ),
     );

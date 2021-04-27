@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "42359230843",
+    "firebase_url": "https://mavericks-abroad-default-rtdb.firebaseio.com/",
     "project_id": "mavericks-abroad",
     "storage_bucket": "mavericks-abroad.appspot.com"
   },

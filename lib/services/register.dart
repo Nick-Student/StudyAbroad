@@ -166,7 +166,8 @@ class _RegisterState extends State<Register> {
                                     setState(() => error = 'There was an error when attempting to make your profile');
                                     print(error);
                                   }
-                                  }
+                                  Navigator.pushReplacementNamed(context, 'login');
+                                }
                               },
                               padding: EdgeInsets.symmetric(vertical: 10,),
                               color: Colors.green,

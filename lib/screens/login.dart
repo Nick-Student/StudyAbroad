@@ -136,6 +136,9 @@ class _Login extends State<Login>{
                                     if (result == null){
                                        setState(() => error = 'Failed to sign in with given credentials');
                                     }
+                                    //if(result != null){
+                                    //  Navigator.pushReplacementNamed(context, 'home');
+                                    // }
                                   }
                                 },
                                 padding: EdgeInsets.symmetric(vertical: 20),
@@ -175,25 +178,25 @@ class _Login extends State<Login>{
                         ),
                         color: Colors.blueGrey,
                       ),
-                      RaisedButton(
-                          onPressed: () async {
-                            dynamic result = await _auth.signInAnon();
-                            if (result == null) {
-                              print('error signing in');
-                            }else {
-                              print('signed in');
-                              print('anonymous user ' + result.uid);
-                            }
-                            Navigator.pushReplacementNamed(
-                              context,
-                              'home',
-                            );
-                          },
-                          child: Text(
-                              'Sign in Anonymously'
-                          ),
-                        color: Colors.blueGrey,
-                      )
+                      // RaisedButton(
+                      //     onPressed: () async {
+                      //       dynamic result = await _auth.signInAnon();
+                      //       if (result == null) {
+                      //         print('error signing in');
+                      //       }else {
+                      //         print('signed in');
+                      //         print('anonymous user ' + result.uid);
+                      //       }
+                      //       Navigator.pushReplacementNamed(
+                      //         context,
+                      //         'home',
+                      //       );
+                      //     },
+                      //     child: Text(
+                      //         'Sign in Anonymously'
+                      //     ),
+                      //   color: Colors.blueGrey,
+                      // )
                     ],
                   )
                 ],
