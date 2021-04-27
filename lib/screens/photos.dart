@@ -9,11 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Photobook extends StatefulWidget {
-  int _index;
-
-  GridItem(int index){
-    this._index = index+1;
-  }
 
   @override
   _PhotobookState createState() => _PhotobookState();
@@ -23,8 +18,10 @@ class _PhotobookState extends State<Photobook> {
 
   Widget makeGrid(){
     return GridView.builder(
+        //Sets the grid item count to a max of 20
         itemCount: 20,
         gridDelegate:
+        //Sets the number of columns in the grid to 2
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context,index) {
           return GridItem(index+1);
@@ -36,14 +33,17 @@ class _PhotobookState extends State<Photobook> {
     final _imagePicker = ImagePicker();
     PickedFile image;
 
+    //Dialog to ask for access to user gallery
     await Permission.photos.request();
 
     var permissionStatus = await Permission.photos.status;
 
     if (permissionStatus.isGranted){
+      //Using image picker to open user's image gallery to retrieve picture for upload
       image = await _imagePicker.getImage(source: ImageSource.gallery);
       var file = File(image.path);
 
+      //If the user has chosen an image we now upload that image under test a "3.jpg"
       if (image!=null){
         var snapshot = await _firebaseStorage.ref().child('test/3.jpg').putFile(file).onComplete;
       }
@@ -84,10 +84,12 @@ class GridItem extends StatefulWidget {
 
 class _GridItemState extends State<GridItem> {
   Uint8List imageFile;
+  //set photoReference to look into the test/ directory of the storage
   StorageReference photosReference = FirebaseStorage.instance.ref().child("test");
 
   getImage(){
     int MAX_SIZE = 7*1024*1024;
+    //photosReference gets a reference of the specified photo listed by .child
     photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
       this.setState(() {
         imageFile = data;
@@ -98,6 +100,7 @@ class _GridItemState extends State<GridItem> {
     requestedIndexes.add(widget._index);
   }
 
+  //Filling out the gridview with either the retrieved images from storage or "No Data"
   Widget decideGridTileWidget() {
     if(imageFile ==null){
       return Center(child: Text("No Data"));
