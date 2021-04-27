@@ -23,7 +23,7 @@ class _PhotobookState extends State<Photobook> {
 
   Widget makeGrid(){
     return GridView.builder(
-        itemCount: 10,
+        itemCount: 20,
         gridDelegate:
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context,index) {
@@ -87,20 +87,15 @@ class _GridItemState extends State<GridItem> {
   StorageReference photosReference = FirebaseStorage.instance.ref().child("test");
 
   getImage(){
-    if(!requestedIndexes.contains(widget._index)){
-      int MAX_SIZE = 7*1024*1024;
-      photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
-        this.setState(() {
-          imageFile = data;
-        });
-        imageData.putIfAbsent(widget._index, (){
-          return data;
-        });
-      }).catchError((error){
-        //debugPrint(error.toString());
+    int MAX_SIZE = 7*1024*1024;
+    photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
+      this.setState(() {
+        imageFile = data;
       });
-      requestedIndexes.add(widget._index);
-    }
+    }).catchError((error){
+      debugPrint(error.toString());
+    });
+    requestedIndexes.add(widget._index);
   }
 
   Widget decideGridTileWidget() {
@@ -114,13 +109,7 @@ class _GridItemState extends State<GridItem> {
   @override
   void initState(){
     super.initState();
-    if(!imageData.containsKey(widget._index)){
-      getImage();
-    } else {
-      this.setState(() {
-        imageFile = imageData[widget._index];
-      });
-    }
+    getImage();
   }
 
   @override
