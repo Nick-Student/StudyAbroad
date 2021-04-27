@@ -1,9 +1,88 @@
 // Photobase
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'photoStorage.dart';
+//import 'package:flutter/cupertino.dart';
+import 'dart:typed_data';
 
-List<Pictures> _pictures = [
+import 'package:flutter/material.dart';
+//import 'photoStorage.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+class Photobook extends StatefulWidget {
+  @override
+  _PhotobookState createState() => _PhotobookState();
+}
+
+class _PhotobookState extends State<Photobook> {
+
+  Widget makeGrid(){
+    return GridView.builder(
+      itemCount: 12,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (context,index) {
+          return GridItem(index+1);
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Photobook', textAlign: TextAlign.center,),
+      ),
+      body: Container(
+        child: makeGrid(),
+      ),
+    );
+  }
+}
+
+class GridItem extends StatefulWidget {
+  int _index;
+
+  GridItem(int index){
+    this._index = index;
+  }
+
+  @override
+  _GridItemState createState() => _GridItemState();
+}
+
+class _GridItemState extends State<GridItem> {
+  Uint8List imageFile;
+  StorageReference photosReference = FirebaseStorage.instance.ref().child("test");
+
+  getImage(){
+    int MAX_SIZE = 7*1024*1024;
+    photosReference.child('${widget._index}.jpg').getData(MAX_SIZE).then((data){
+      this.setState(() {
+        imageFile = data;
+      });
+    }).catchError((error){
+
+    });
+  }
+
+  Widget decideGridTileWidget() {
+    if(imageFile ==null){
+      return Center(child: Text("No Data"));
+    } else {
+      return Image.memory(imageFile,fit: BoxFit.cover,);
+    }
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    getImage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridTile(child: decideGridTileWidget());
+  }
+}
+
+/*List<Pictures> _pictures = [
   Pictures(
     path: 'pictures/fuji_lake.jpg',
     photographer: 'Nick',
@@ -148,4 +227,4 @@ class Pictures {
     @required this.title,
     @required this.details,
   });
-}
+} */
